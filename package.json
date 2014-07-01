@@ -1,0 +1,36 @@
+{
+  "name": "grunt-inline-imgbase64",
+  "version": "0.0.1",
+  "description": "The best Grunt plugin ever.",
+  "homepage": "https://github.com/junlonghuo/grunt-inline-imgbase64",
+  "repository": "git://github.com/junlonghuo/grunt-inline-imgbase64.git",
+  "author": {
+    "name": "junlonghuo",
+    "email": "hjl845621@gmail.com",
+    "url": ""
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-nodeunit": "~0.3.0",
+    "grunt": "~0.4.2",
+    "jshint-stylish": "~0.1.5",
+    "load-grunt-tasks": "~0.3.0"
+  },
+    "dependencies": {
+        "uglify-js": "2.4.1",
+        "datauri": "~0.2.0",
+        "http-sync": "~0.0.3"
+    },
+  "scripts": {
+    "test": "grunt test"
+  }
+}
