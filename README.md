@@ -1,6 +1,6 @@
 # grunt-inline-imgbase64
 
-> The best Grunt plugin ever.
+> Grunt plugin for imageUrl replaced by base64 data.
 
 ## Getting Started
 This plugin requires Grunt.
@@ -58,15 +58,14 @@ A number value that is used to limit encoding image size
 
 ### Usage Examples
 
-#### Default Options
 下面的例子会内联html和css文件内的imageUrl。支持本地和远程文件。
 
 ```js
 inline_imgbase64: {
         options:{
-            exts:['jpg','jpeg','png','gif'],
-            tag:'__inline',
-            maxLength:40 //设置编码远程图片的最大尺寸，超过maxLength时不转换，单位KB
+            exts:['jpg','jpeg','png','gif'], //需要替换的文件类型
+            tag:'__inline', // 设定此值时，带此参数的imageUrl才会被替换
+            maxLength:40 //只用于远程图片大小限制，图片大小超过maxLength时不转换，单位KB
         },
         dist: {
             src: ['test/dist/*.*'],
@@ -80,7 +79,9 @@ inline_imgbase64: {
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+0.1.0
+[!]基本完成功能
 
 ## License
 Copyright (c) 2014 junlonghuo. Licensed under the MIT license.

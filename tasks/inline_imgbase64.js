@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('inline_imgbase64', 'The best Grunt plugin ever.', function () {
 
-      var options=this.options(),
+      var options=this.options({exts:[],tag:'',maxLength:null}),
           files = this.filesSrc,
           dest = this.data.dest;
 
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
 
           var fileContent=grunt.file.read(filepath);
 
-          if(fileType==='html'){
+          if(['html','htm','php','tpl','vm'].indexOf(fileType)>-1){
               fileContent=html(filepath,fileContent,options);
           }else if(fileType==='css'){
               fileContent=css(filepath,fileContent,options);
