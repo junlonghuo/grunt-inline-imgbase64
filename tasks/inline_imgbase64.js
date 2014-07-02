@@ -151,6 +151,7 @@ module.exports = function (grunt) {
             grunt.log.writeln('File downloaded!', url);
             //response.body_length
             if(options.maxLength && response.body_length>(options.maxLength*1024)){
+                grunt.log.writeln('This image size is greater then maxLength', url);
                 return url;
             }
             return 'data:' + response.headers["Content-Type"] + ';base64,' + new Buffer(response.body).toString('base64');
