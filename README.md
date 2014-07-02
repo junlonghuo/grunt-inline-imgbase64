@@ -26,7 +26,9 @@ In your project's Gruntfile, add a section named `inline_imgbase64` to the data 
 grunt.initConfig({
   inline_imgbase64: {
     options: {
-      // Task-specific options go here.
+      exts:['jpg','jpeg','png','gif'],
+      tag:'__inline',
+      maxLength:40
     },
     your_target: {
       // Target-specific file lists and/or options go here.
@@ -37,50 +39,42 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.exts
+Type: `Array`
+Default value: `[]`
+
+A array value that is used to filter image url.
+
+#### options.tag
 Type: `String`
-Default value: `',  '`
+Default value: `''`
 
-A string value that is used to do something with whatever.
+A string value that is used to decide whether replace by base64
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+####maxLength
+Type: `Number`
+default value null
+A number value that is used to limit encoding image size
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+下面的例子会内联html和css文件内的imageUrl。支持本地和远程文件。
 
 ```js
-grunt.initConfig({
-  inline_imgbase64: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
+inline_imgbase64: {
+        options:{
+            exts:['jpg','jpeg','png','gif'],
+            tag:'__inline',
+            maxLength:40 //设置编码远程图片的最大尺寸，超过maxLength时不转换，单位KB
+        },
+        dist: {
+            src: ['test/dist/*.*'],
+            dest: ['tmp/']
+        }
+    }
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  inline_imgbase64: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
