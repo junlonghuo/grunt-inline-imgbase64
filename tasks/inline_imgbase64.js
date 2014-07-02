@@ -12,6 +12,7 @@ module.exports = function (grunt) {
 
     var path=require('path');
     var httpSync = require('http-sync');
+    var chalk = require('chalk');
     var DataUri = require('datauri');
     //var imgUrlReg=/<img.+?src=["']([^"':]+?)["'].*?\/?\s*?>/g;
     var imgUrlReg=/<img.+?src=["']([^"']+?)["'].*?\/?\s*?>/g;
@@ -43,7 +44,9 @@ module.exports = function (grunt) {
 
           var destFile=getPathToDestination(filepath,dest);
           grunt.file.write(destFile,fileContent);
-          grunt.log.ok();
+          //grunt.log.ok();
+            grunt.log.writeln(chalk.blue('Inline imageUrl with base64 data: ') + chalk.cyan(filepath) + ' → ' +
+                chalk.cyan(destFile));
       });
 
   });
